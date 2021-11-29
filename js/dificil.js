@@ -1,6 +1,7 @@
 const elementos = document.getElementsByTagName("td"); // -> Devuelve lista de todos los <td></td>
 const tabla = document.getElementById("tablero"); // -> Devuelve el elemento cuyo id es tablero
 
+
 // Itera las filas
 for (let i = 0; i < tabla.rows.length; i++) {
   const fila = tabla.rows[i]; // i (num fila) -> fila (elemento en si)
@@ -63,7 +64,7 @@ for (let i = 0; i < tabla.rows.length; i++) {
 
 let generados = 0;
 
-while(generados < 10) {
+while(generados < 20) {
   const fila = getRandomArbitrary(0, tabla.rows.length);
   const columna = getRandomArbitrary(0, tabla.rows[0].cells.length);
 

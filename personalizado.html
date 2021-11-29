@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego de luces</title>
+
+  <!-- Link css -->
+  <link rel="stylesheet" href="css/facil.css">
+
+</head>
+<body>
+
+  <form id="niveles">
+    <input type="radio" name="nivel" value="F">Fácil<br>
+    <input type="radio" name="nivel" value="M">Intermedio<br>
+    <input type="radio" name="nivel" value="D">Difícil<br>
+    <input type="radio" name="nivel" value="P">Personalizado<br>
+
+    <fieldset>
+      <legend>Parámetros</legend>
+      <!-- No admitir decimales: https://stackoverflow.com/questions/37043867/how-to-avoid-decimal-values-in-input-type-number -->
+      
+      <label for="filas">Filas</label>
+      <input type="number" min="0" step="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" name="filas"> <!-- El min 0 quita los negativos -->
+      
+      <label for="columnas">Columnas</label>
+      <input type="number" min="0" step="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" name="columnas">
+      
+      <label for="luces">Luces encendidas</label>
+      <input type="number" min="0" step="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" name="luces">
+    </fieldset>
+
+    <input type="submit" value="Empezar">
+  </form>
+
+  <!-- Tablero -->
+  <table id="tablero"></table>
+
+</body>
+
+<!-- Link js -->
+<script src="js/personalizado.js"></script>
+
+</html>

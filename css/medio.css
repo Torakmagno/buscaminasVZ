@@ -1,0 +1,19 @@
+html {
+  background-color: grey;
+}
+
+table {
+  height: 100%;
+  border-collapse: collapse;
+}
+
+td {
+  width: 100px;
+  height: 100px;
+  background-color: black;
+  border: 1px solid blue;
+}
+
+.iluminado {
+  background-color: yellow;
+}
