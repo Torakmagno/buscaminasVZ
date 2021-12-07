@@ -88,15 +88,7 @@ while(generados < 10) {
 }
 
 
-/*
-  Pendientes:
-    1. Cada jugada, comprobar si ha ganado
-    2. Tablero de dimensiones modificables
-    3. Crono + contador de jugadas
-    4. mensaje ganar y bloqueado de celdas/contador.
-    5. tablero personalizado (e los tres campos (-filas-columnas-n luces) tienen un valor entero positivo y que el número de luces 
-        introducido es menor que el producto de filas y columnas introducido.)
-*/
+
 
 // Retorna un número aleatorio entre min (incluido) y max (incluido)
 function getRandomArbitrary(min, max) {

@@ -11,6 +11,34 @@
 
 </head>
 <body>
+
+
+  <span id="cronometro">0</span>
+    <br>
+    <input type="button" id="boton1" value="detener">
+
+    <script>
+        let reloj;
+        reloj = setInterval(procesar, 1000);
+        document.getElementById('boton1').addEventListener('click', presionBoton);
+
+        function procesar() {
+            let nro = parseInt(document.getElementById('cronometro').innerHTML);
+            nro++;
+            document.getElementById('cronometro').innerHTML = nro;
+        }
+
+        function presionBoton() {
+            if (document.getElementById('boton1').value == 'detener') {
+                clearInterval(reloj);
+                document.getElementById('boton1').value = 'continuar';
+            } else {
+                reloj = setInterval(procesar, 1000);
+                document.getElementById('boton1').value = 'detener';
+            }
+        }
+    </script>
+
   <p id="intentos">Intentos : 0</p>
   
 

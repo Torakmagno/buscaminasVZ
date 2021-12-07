@@ -46,6 +46,7 @@ for (let i = 0; i < tabla.rows.length; i++) {
         .cells[j+1] // seleccionamos columna
         .classList.toggle("iluminado") // ilumninamos
       }
+      comprobarGanador();
     }
 
   }
@@ -85,4 +86,51 @@ while(generados < 20) {
 // Retorna un número aleatorio entre min (incluido) y max (incluido)
 function getRandomArbitrary(min, max) {
   return Math.floor(Math.random() * max) - min;
+}
+
+// Comprueba si hay ganador
+function comprobarGanador() {
+
+  // For of -> Para cada "casilla" del array de elementos
+  for (const casilla of elementos) {
+    const iluminado = casilla.classList.contains("iluminado"); // Contiene la class=iluminado? -> True / False
+
+    if(iluminado == false) {
+      return; // Paramos la ejecución de la función
+    }
+  }
+
+  // Solo llega si no ha saltado el return -> Todas están iluminadas
+  alert("has ganado");
+  ganador = true;
+}
+
+niveles.onsubmit = (event) => {
+  event.preventDefault(); // No recarga la página
+  const nivel = document.querySelector('input[name="nivel"]:checked').value; // Nos devuelve el valor del nivel seleccionado (F M S)
+
+  if(nivel == "F") {
+    window.location = "facil.html";
+  } else if(nivel == "M") {
+    window.location = "medio.html";
+  } else if(nivel == "D") {
+    window.location = "dificil.html";
+  } else if(nivel == "P") {
+    // Tener en cuenta lo que ha puesto el usuario (filas, columnas, luces)
+    
+    const data = new FormData(event.target); // Habilita getters y setters para el formulario
+    
+    const filas = data.get("filas");
+    const columnas = data.get("columnas");
+    const luces = data.get("luces");
+
+    const url = new URL("/personalizado.html", window.location.origin); // personalizado.html
+
+    url.searchParams.append("filas", filas); // personalizado.html?filas=3
+    url.searchParams.append("columnas", columnas);
+    url.searchParams.append("luces", luces);
+
+    window.location = url.toString();
+    
+  }
 }

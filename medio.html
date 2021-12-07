@@ -12,35 +12,38 @@
 
 </head>
 
+<span id="cronometro">0</span>
+<br>
+<input type="button" id="boton1" value="detener">
+
+<script>
+    let reloj;
+    reloj = setInterval(procesar, 1000);
+    document.getElementById('boton1').addEventListener('click', presionBoton);
+
+    function procesar() {
+        let nro = parseInt(document.getElementById('cronometro').innerHTML);
+        nro++;
+        document.getElementById('cronometro').innerHTML = nro;
+    }
+
+    function presionBoton() {
+        if (document.getElementById('boton1').value == 'detener') {
+            clearInterval(reloj);
+            document.getElementById('boton1').value = 'continuar';
+        } else {
+            reloj = setInterval(procesar, 1000);
+            document.getElementById('boton1').value = 'detener';
+        }
+    }
+</script>
+
+
 <body>
 
-    <form id="niveles">
-        <input type="radio" name="nivel" value="F">Fácil<br>
-        <input type="radio" name="nivel" value="M">Intermedio<br>
-        <input type="radio" name="nivel" value="D">Difícil<br>
-        <input type="radio" name="nivel" value="P">Personalizado<br>
+    <p id="intentos">Intentos : 0</p>
     
-        <fieldset>
-            <legend>Parámetros</legend>
-            <!-- No admitir decimales: https://stackoverflow.com/questions/37043867/how-to-avoid-decimal-values-in-input-type-number -->
-    
-            <label for="filas">Filas</label>
-            <input type="number" min="0" step="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
-                name="filas"> <!-- El min 0 quita los negativos -->
-    
-            <label for="columnas">Columnas</label>
-            <input type="number" min="0" step="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
-                name="columnas">
-    
-            <label for="luces">Luces encendidas</label>
-            <input type="number" min="0" step="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
-                name="luces">
-        </fieldset>
-    
-        <input type="submit" value="Empezar">
-    </form>
-
-    <!-- Tablero -->
+<!-- Tablero -->
     <table id="tablero">
         <tr>
             <td></td>
@@ -92,6 +95,33 @@
         </tr>
     </table>
 
+    <form id="niveles">
+        <input type="radio" name="nivel" value="F">Fácil<br>
+        <input type="radio" name="nivel" value="M">Intermedio<br>
+        <input type="radio" name="nivel" value="D">Difícil<br>
+        <input type="radio" name="nivel" value="P">Personalizado<br>
+    
+        <fieldset>
+            <legend>Parámetros</legend>
+            <!-- No admitir decimales: https://stackoverflow.com/questions/37043867/how-to-avoid-decimal-values-in-input-type-number -->
+    
+            <label for="filas">Filas</label>
+            <input type="number" min="0" step="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                name="filas"> <!-- El min 0 quita los negativos -->
+    
+            <label for="columnas">Columnas</label>
+            <input type="number" min="0" step="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                name="columnas">
+    
+            <label for="luces">Luces encendidas</label>
+            <input type="number" min="0" step="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                name="luces">
+        </fieldset>
+    
+        <input type="submit" value="Empezar">
+    </form>
+
+    
 </body>
 
 <!-- Link js -->
