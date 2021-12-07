@@ -1,11 +1,6 @@
 const elementos = document.getElementsByTagName("td"); // -> Devuelve lista de todos los <td></td>
 const tabla = document.getElementById("tablero"); // -> Devuelve el elemento cuyo id es tablero
-const niveles = document.getElementById("niveles");
-const contador = document.getElementById("intentos");
 
-
-let intentos=0;
-let ganador = false;
 
 // Itera las filas
 for (let i = 0; i < tabla.rows.length; i++) {
@@ -20,12 +15,6 @@ for (let i = 0; i < tabla.rows.length; i++) {
     
     // asignamos onclick a la casilla
     casilla.onclick = () => {
-
-if(ganador == false) { // Solo se ejecuta si no hay ganador
-
-          intentos++;
-          contador.innerHTML = "Intentos : " + intentos; 
-
       casilla.classList.toggle("iluminado") // Interruptor de clases
 
       // Iluminar las de alrededor
@@ -87,7 +76,12 @@ while(generados < 6) {
 }
 
 
-
+/*
+  Pendientes:
+    1. Cada jugada, comprobar si ha ganado
+    2. Tablero de dimensiones modificables
+    3. Crono + contador de jugadas
+*/
 
 // Retorna un número aleatorio entre min (incluido) y max (incluido)
 function getRandomArbitrary(min, max) {
@@ -139,4 +133,4 @@ niveles.onsubmit = (event) => {
     window.location = url.toString();
     
   }
-}}
+}
