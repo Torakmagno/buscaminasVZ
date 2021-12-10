@@ -57,7 +57,7 @@ for (let i = 0; i < tabla.rows.length; i++) {
   // array[1] -> 40
   // array[2] -> 30
 
-  // array.length -> 3
+  // array.length -> 3;
 
 
   
