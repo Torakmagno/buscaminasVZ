@@ -11,7 +11,10 @@
     <link rel="stylesheet" href="css/medio.css">
 
 </head>
-
+<body>
+    
+<div class="cronoint">
+    <fieldset>
 <span id="cronometro">0</span>
 <br>
 <input type="button" id="boton1" value="detener">
@@ -37,12 +40,15 @@
         }
     }
 </script>
-
-
-<body>
-
+</fieldset>
+<fieldset></fieldset>
     <p id="intentos">Intentos : 0</p>
-    
+    </fieldset>
+    </div>
+
+
+    <div class="titulot">
+        <h1>Juego de luces Valentino Zampieri</h1>
 <!-- Tablero -->
     <table id="tablero">
         <tr>
@@ -94,13 +100,17 @@
             <td></td>
         </tr>
     </table>
+    </div>
+
+    <div class="dificultades">
 
     <form id="niveles">
+        <fieldset>
         <input type="radio" name="nivel" value="F">Fácil<br>
         <input type="radio" name="nivel" value="M">Intermedio<br>
         <input type="radio" name="nivel" value="D">Difícil<br>
         <input type="radio" name="nivel" value="P">Personalizado<br>
-    
+    </fieldset>
         <fieldset>
             <legend>Parámetros</legend>
             <!-- No admitir decimales: https://stackoverflow.com/questions/37043867/how-to-avoid-decimal-values-in-input-type-number -->
@@ -120,7 +130,7 @@
     
         <input type="submit" value="Empezar">
     </form>
-
+</div>
     
 </body>
 

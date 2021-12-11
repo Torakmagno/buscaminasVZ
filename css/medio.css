@@ -2,6 +2,32 @@ html {
   background-color: grey;
 }
 
+
+body{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  
+}
+
+
+.titulot{
+  display: flex;
+  flex-direction: column;
+}
+
+.cronoint{
+  display:flex;
+  flex-direction: column;
+  margin-top: 200px;
+}
+
+.dificultades{
+   display:flex;
+  flex-direction: column;
+  margin-top: 200px;
+}
+
 table {
   height: 100%;
   border-collapse: collapse;
@@ -17,3 +43,4 @@ td {
 .iluminado {
   background-color: yellow;
 }
+
