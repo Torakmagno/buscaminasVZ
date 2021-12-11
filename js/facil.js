@@ -140,24 +140,16 @@ niveles.onsubmit = (event) => {
     window.location = url.toString();
 
 /*
- function deshabilitarBotones () {
-  if (nivel  != 'P') {  
-    //deshabilitar los botones si no se elige personalizado  
-    document.getElementById("filas").disabled = true;  
-    document.getElementById("columnas").disabled = true;  
-    document.getElementById("luces").disabled = true;  
-  } else {  
-    // else, se activan
-    document.getElementById("filas").disabled = false;  
-    document.getElementById("columnas").disabled = false;  
-    document.getElementById("luces").disabled = false;  
-  }  }
-*/
+const dificultad = document.getElementsByName("nivel");
+const personalizados = document.getElementsByClassName("personalizado");
 
-
-
-
+if (nivel != "P") {
+  personalizados.disabled = true;
+  }else {
+    personalizados.disabled = false;
+  }*/
+}
 }  
  
     
-  }
+  

@@ -10,7 +10,6 @@ body{
   
 }
 
-
 .titulot{
   display: flex;
   flex-direction: column;
@@ -43,4 +42,11 @@ td {
 .iluminado {
   background-color: yellow;
 }
+
+#nd{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 

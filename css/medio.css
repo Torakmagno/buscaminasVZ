@@ -44,3 +44,8 @@ td {
   background-color: yellow;
 }
 
+#nd{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
