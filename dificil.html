@@ -187,15 +187,15 @@
             <!-- No admitir decimales: https://stackoverflow.com/questions/37043867/how-to-avoid-decimal-values-in-input-type-number -->
     
             <label for="filas">Filas</label>
-            <input type="number" min="0" step="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+            <input type="number" min="0" max="25" step="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
                 name="filas"> <!-- El min 0 quita los negativos -->
     
             <label for="columnas">Columnas</label>
-            <input type="number" min="0" step="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+            <input type="number" min="0" max="25" step="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
                 name="columnas">
     
             <label for="luces">Luces encendidas</label>
-            <input type="number" min="0" step="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+            <input type="number" min="0" max="25" step="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
                 name="luces">
         </fieldset>
     
