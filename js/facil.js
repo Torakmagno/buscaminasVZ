@@ -77,7 +77,7 @@ for (let i = 0; i < tabla.rows.length; i++) {
 
 let generados = 0;
 
-while(generados < 10) {
+while(generados < 10) {  //establecemos el numero de luces aleatorias.
   const fila = getRandomArbitrary(0, tabla.rows.length);
   const columna = getRandomArbitrary(0, tabla.rows[0].cells.length);
 
@@ -139,15 +139,7 @@ niveles.onsubmit = (event) => {
 
     window.location = url.toString();
 
-/*
-const dificultad = document.getElementsByName("nivel");
-const personalizados = document.getElementsByClassName("personalizado");
 
-if (nivel != "P") {
-  personalizados.disabled = true;
-  }else {
-    personalizados.disabled = false;
-  }*/
 }
 }  
  
