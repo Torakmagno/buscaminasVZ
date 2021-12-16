@@ -1,12 +1,14 @@
 const elementos = document.getElementsByTagName("td"); // -> Devuelve lista de todos los <td></td>
 const tabla = document.getElementById("tablero"); // -> Devuelve el elemento cuyo id es tablero
-const niveles = document.getElementById("niveles");
+const minas = 3;
 const contador = document.getElementById("intentos");
 
+let filas=tabla.rows.lenght
+let columnas=tabla.rows[0].cells.lenght
 
-let intentos=0;
-let ganador = false;
+let finalizado = false;
 
+let destapadas = 0; 
 // Itera las filas
 for (let i = 0; i < tabla.rows.length; i++) {
   const fila = tabla.rows[i]; // i (num fila) -> fila (elemento en si)
@@ -20,46 +22,33 @@ for (let i = 0; i < tabla.rows.length; i++) {
     
     // asignamos onclick a la casilla
     casilla.onclick = () => {
-
-      if(ganador == false) { // Solo se ejecuta si no hay ganador
+      if(finalizado == false) { // Solo se ejecuta si no hay ganador
 
           intentos++;
           contador.innerHTML = "Intentos : " + intentos; 
 
-      casilla.classList.toggle("iluminado") // Interruptor de clases
+          // Si el usuario no ha perdido
+          if(finalizado == false) {
+            
+          // 2 casos: Mina / No mina (almacenado en el atributo)
+          // Leemos si tiene mina
+          if(casilla.getAttribute("mina") != "true") {
+            // iluminamos del color
+            casilla.classList.add("iluminado"); // Interruptor de clases
+            destapadas++;
+          } else {
+            casilla.classList.add("explotado");
+            finalizado = true;
+            document.getElementById("mensajeTablero").innerHTML = "Has perdido!";
 
-      // Iluminar las de alrededor
-
-      // arriba
-      if(i > 0) { 
-        tabla.rows[i-1] // seleccionamos fila (una menos)
-          .cells[j] // seleccionamos columna
-          .classList.toggle("iluminado") // ilumninamos
-      }
+            // Paramos el crono
+            clearInterval(reloj);
+            document.getElementById('boton1').value = 'continuar';
+          }
+          }
       
-      // abajo
-      if(i < tabla.rows.length - 1) {
-        tabla.rows[i+1] // seleccionamos fila (una menos)
-          .cells[j] // seleccionamos columna
-          .classList.toggle("iluminado") // ilumninamos
-      }
-      
-      // izquierda
-      if(j > 0) {
-        tabla.rows[i] // seleccionamos fila (una menos)
-          .cells[j-1] // seleccionamos columna
-          .classList.toggle("iluminado") // ilumninamos
-      }
-
-      // derecha
-      if(j < tabla.rows[0].cells.length - 1) {
-        tabla.rows[i] // seleccionamos fila (una menos)
-        .cells[j+1] // seleccionamos columna
-        .classList.toggle("iluminado") // ilumninamos
-      }
       comprobarGanador();
     }
-
   }
   }
 
@@ -77,17 +66,15 @@ for (let i = 0; i < tabla.rows.length; i++) {
 
 let generados = 0;
 
-while(generados < 10) {  //establecemos el numero de luces aleatorias.
+while(generados < minas) {
   const fila = getRandomArbitrary(0, tabla.rows.length);
   const columna = getRandomArbitrary(0, tabla.rows[0].cells.length);
 
-  if(!tabla.rows[fila].cells[columna].classList.contains("iluminado")) { // Si la lista de clases no contiene iluminado 
-    tabla.rows[fila].cells[columna].classList.toggle("iluminado");
+  if(!tabla.rows[fila].cells[columna].getAttribute("mina") != "true") { // Si la lista de clases no contiene iluminado 
+    tabla.rows[fila].cells[columna].setAttribute("mina", "true");
     generados++;
   }
 }
-
-
 
 
 // Retorna un número aleatorio entre min (incluido) y max (incluido)
@@ -98,18 +85,17 @@ function getRandomArbitrary(min, max) {
 // Comprueba si hay ganador
 function comprobarGanador() {
 
-  // For of -> Para cada "casilla" del array de elementos
-  for (const casilla of elementos) {
-    const iluminado = casilla.classList.contains("iluminado"); // Contiene la class=iluminado? -> True / False
+// Que las casillas que quedan tengan todas bomba
+  if(((filas * columnas) - destapadas) == minas) {
+    document.getElementById("mensajeTablero").innerHTML = "Has ganado!";
+    // Solo llega si no ha saltado el return -> Todas están iluminadas
+    finalizado = true;
 
-    if(iluminado == false) {
-      return; // Paramos la ejecución de la función
-    }
+    // Paramos el crono
+    clearInterval(reloj);
+    document.getElementById('boton1').value = 'continuar';
   }
 
-  // Solo llega si no ha saltado el return -> Todas están iluminadas
-  alert("has ganado");
-  ganador = true;
 }
 
 niveles.onsubmit = (event) => {
@@ -138,9 +124,8 @@ niveles.onsubmit = (event) => {
     url.searchParams.append("luces", luces);
 
     window.location = url.toString();
-
-
-}
+    
+  }
 }  
  
     

@@ -10,6 +10,11 @@ body{
   
 }
 
+.explotado {
+  background-image: url(/bomba.jpg);
+  background-size: cover;
+}
+
 
 .titulot{
   display: flex;
